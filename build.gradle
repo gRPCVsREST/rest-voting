@@ -42,11 +42,11 @@ idea.module {
 }
 
 bootRepackage {
-    mainClass = 'org.grpcsvrest.rcs.Application'
+    mainClass = 'org.grpcvsrest.restvoting.Application'
 }
 
 task buildImage(type: DockerBuildImage) {
-    dependsOn jar
+    dependsOn bootRepackage
     inputDir = project.projectDir
     tag = 'restvoting'
 }
