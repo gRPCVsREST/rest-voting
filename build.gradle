@@ -42,36 +42,36 @@ idea.module {
 }
 
 bootRepackage {
-    mainClass = 'org.grpcvsrest.restvoting.Application'
+    mainClass = 'org.grpcvsrest.voting.Application'
 }
 
 task buildImage(type: DockerBuildImage) {
     dependsOn bootRepackage
     inputDir = project.projectDir
-    tag = 'restvoting'
+    tag = 'voting'
 }
 
 
 task buildDocker(type: DockerBuildImage) {
     dependsOn bootRepackage
     inputDir = project.projectDir
-    tag = 'restvoting:latest'
+    tag = 'voting:latest'
 }
 
 task tagDocker(type: Exec) {
     dependsOn buildDocker
-    commandLine 'docker', 'tag', 'restvoting:latest', 'gcr.io/alien-fold-180922/restvoting:latest'
+    commandLine 'docker', 'tag', 'voting:latest', 'gcr.io/alien-fold-180922/voting:latest'
 }
 
 task pushDocker(type: Exec) {
     dependsOn tagDocker
-    commandLine 'gcloud', 'docker', '--', 'push', 'gcr.io/alien-fold-180922/restvoting:latest'
+    commandLine 'gcloud', 'docker', '--', 'push', 'gcr.io/alien-fold-180922/voting:latest'
 }
 
 task deploy(type: Exec) {
-    commandLine 'kubectl', 'create', '-f', 'k8s/restvoting.yaml'
+    commandLine 'kubectl', 'create', '-f', 'k8s/voting.yaml'
 }
 
 task undeploy(type: Exec) {
-    commandLine 'kubectl', 'delete', '-f', 'k8s/restvoting.yaml'
+    commandLine 'kubectl', 'delete', '-f', 'k8s/voting.yaml'
 }

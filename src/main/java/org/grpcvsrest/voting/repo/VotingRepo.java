@@ -1,4 +1,4 @@
-package org.grpcvsrest.restvoting.repo;
+package org.grpcvsrest.voting.repo;
 
 import com.google.common.base.MoreObjects;
 import com.google.common.base.Objects;

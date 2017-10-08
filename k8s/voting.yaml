@@ -1,7 +1,7 @@
 apiVersion: apps/v1beta1
 kind: Deployment
 metadata:
-  name: rest-voting
+  name: voting
 spec:
   replicas: 1
   template:
@@ -10,8 +10,8 @@ spec:
         app: rest-voting
     spec:
       containers:
-        - name: rest-voting
-          image: gcr.io/alien-fold-180922/restvoting:latest
+        - name: voting
+          image: gcr.io/alien-fold-180922/voting:latest
           imagePullPolicy: Always
           ports:
             - containerPort: 8080
@@ -22,7 +22,7 @@ spec:
 apiVersion: v1
 kind: Service
 metadata:
-  name: rest-voting
+  name: voting
 spec:
   type: LoadBalancer
   selector:

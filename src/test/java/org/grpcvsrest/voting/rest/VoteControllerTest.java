@@ -1,13 +1,11 @@
-package org.grpcvsrest.restvoting.rest;
+package org.grpcvsrest.voting.rest;
 
 import com.google.common.base.Charsets;
 import com.google.common.io.Resources;
-import org.grpcvsrest.restvoting.repo.Vote;
-import org.grpcvsrest.restvoting.repo.VotingRepo;
-import org.grpcvsrest.restvoting.service.VotingService;
+import org.grpcvsrest.voting.repo.Vote;
+import org.grpcvsrest.voting.service.VotingService;
 import org.junit.Test;
 import org.junit.runner.RunWith;
-import org.mockito.Mock;
 import org.mockito.Mockito;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.autoconfigure.web.servlet.WebMvcTest;
@@ -17,7 +15,6 @@ import org.springframework.test.context.junit4.SpringRunner;
 import org.springframework.test.web.servlet.MockMvc;
 
 import java.io.IOException;
-import java.nio.charset.Charset;
 
 import static org.springframework.test.web.servlet.request.MockMvcRequestBuilders.post;
 import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.status;

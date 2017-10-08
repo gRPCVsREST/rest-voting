@@ -1,4 +1,4 @@
-package org.grpcvsrest.restvoting.repo;
+package org.grpcvsrest.voting.repo;
 
 import org.junit.Before;
 import org.junit.Test;
