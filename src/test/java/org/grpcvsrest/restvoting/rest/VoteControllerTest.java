@@ -1,9 +1,9 @@
-package org.grpcvsrest.voting.rest;
+package org.grpcvsrest.restvoting.rest;
 
 import com.google.common.base.Charsets;
 import com.google.common.io.Resources;
-import org.grpcvsrest.voting.repo.Vote;
-import org.grpcvsrest.voting.service.VotingService;
+import org.grpcvsrest.restvoting.repo.Vote;
+import org.grpcvsrest.restvoting.service.VotingService;
 import org.junit.Test;
 import org.junit.runner.RunWith;
 import org.mockito.Mockito;

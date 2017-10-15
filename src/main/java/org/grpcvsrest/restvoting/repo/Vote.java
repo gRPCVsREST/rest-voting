@@ -1,4 +1,4 @@
-package org.grpcvsrest.voting.repo;
+package org.grpcvsrest.restvoting.repo;
 
 import com.fasterxml.jackson.annotation.JsonCreator;
 import com.fasterxml.jackson.annotation.JsonProperty;

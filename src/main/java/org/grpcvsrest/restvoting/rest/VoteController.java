@@ -1,7 +1,7 @@
-package org.grpcvsrest.voting.rest;
+package org.grpcvsrest.restvoting.rest;
 
-import org.grpcvsrest.voting.repo.Vote;
-import org.grpcvsrest.voting.service.VotingService;
+import org.grpcvsrest.restvoting.repo.Vote;
+import org.grpcvsrest.restvoting.service.VotingService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;

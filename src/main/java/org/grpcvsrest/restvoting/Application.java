@@ -1,4 +1,4 @@
-package org.grpcvsrest.voting;
+package org.grpcvsrest.restvoting;
 
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
