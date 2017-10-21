@@ -54,7 +54,7 @@ public class VotingService {
 
     private AggregatedContentResponse getContent(int itemId) {
         try {
-            return restTemplate.getForObject(aggregatorUrl+"/content"+itemId, AggregatedContentResponse.class);
+            return restTemplate.getForObject(aggregatorUrl+"/content/"+itemId, AggregatedContentResponse.class);
         } catch (HttpClientErrorException e) {
             if (e.getStatusCode().value() == 404) {
                 return null;
