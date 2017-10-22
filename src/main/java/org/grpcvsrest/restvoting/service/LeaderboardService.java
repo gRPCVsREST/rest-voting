@@ -2,6 +2,7 @@ package org.grpcvsrest.restvoting.service;
 
 import com.google.common.collect.ImmutableMap;
 import com.netflix.hystrix.contrib.javanica.annotation.HystrixCommand;
+import com.netflix.hystrix.contrib.javanica.annotation.HystrixProperty;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.stereotype.Service;
@@ -19,8 +20,13 @@ public class LeaderboardService {
         this.restTemplate = restTemplate;
     }
 
-    @HystrixCommand(fallbackMethod = "doNothing")
-    public void sendToLeaderboard(String username, String category, boolean guessed) {
+    @HystrixCommand(fallbackMethod = "doNothing", commandProperties = {
+            @HystrixProperty(name = "circuitBreaker.requestVolumeThreshold", value = "2"),
+            @HystrixProperty(name = "circuitBreaker.sleepWindowInMilliseconds", value = "2000"),
+            @HystrixProperty(name = "execution.isolation.thread.timeoutInMilliseconds", value = "500"),
+            @HystrixProperty(name = "metrics.rollingStats.timeInMilliseconds", value = "1000")
+    })
+    public String sendToLeaderboard(String username, String category, boolean guessed) {
         restTemplate.put(
                 leaderboardUrl+"/leaderboard/vote/{category}/{user_id}/{guessed}",
                 null,
@@ -29,8 +35,12 @@ public class LeaderboardService {
                         "category", category,
                         "guessed", guessed
                 ));
+        return null;
     }
 
-    public void doNothing() {}
+    public String doNothing(String username, String category, boolean guessed){
+        return null;
+    }
+
 
 }
