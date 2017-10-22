@@ -19,7 +19,7 @@ public class LeaderboardService {
         this.restTemplate = restTemplate;
     }
 
-    @HystrixCommand(fallbackMethod = "doNothing")   
+    @HystrixCommand(fallbackMethod = "doNothing")
     public void sendToLeaderboard(String username, String category, boolean guessed) {
         restTemplate.put(
                 leaderboardUrl+"/leaderboard/vote/{category}/{user_id}/{guessed}",

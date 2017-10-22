@@ -3,6 +3,7 @@ package org.grpcvsrest.restvoting.rest;
 import com.google.common.base.Charsets;
 import com.google.common.io.Resources;
 import org.grpcvsrest.restvoting.repo.Vote;
+import org.grpcvsrest.restvoting.service.LeaderboardService;
 import org.grpcvsrest.restvoting.service.VotingService;
 import org.junit.Test;
 import org.junit.runner.RunWith;
@@ -29,6 +30,8 @@ public class VoteControllerTest {
     private MockMvc mockMvc;
     @MockBean
     private VotingService votingService;
+    @MockBean
+    private LeaderboardService leaderboardService;
 
     @Test
     public void testVote_Post() throws Exception {

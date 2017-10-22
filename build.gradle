@@ -40,6 +40,8 @@ dependencies {
     compile 'org.springframework.cloud:spring-cloud-starter-sleuth'
     compile('org.springframework.cloud:spring-cloud-starter-hystrix')
 
+    compile group: 'org.apache.httpcomponents', name: 'httpclient', version: '4.5.3'
+
     compile 'com.google.guava:guava:23.0'
 
     testCompile 'junit:junit:4.12'
