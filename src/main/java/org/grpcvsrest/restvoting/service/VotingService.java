@@ -34,7 +34,7 @@ public class VotingService {
             votingRepo.save(vote);
             leaderboardService.sendToLeaderboard(
                     vote.getUserId(),
-                    vote.getVotedCategory(),
+                    content.getType(),
                     content.getType().equals(vote.getVotedCategory()));
         }
     }
