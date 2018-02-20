@@ -1,5 +1,3 @@
-import com.bmuschko.gradle.docker.tasks.image.DockerBuildImage
-
 buildscript {
     repositories {
         jcenter()
@@ -61,33 +59,4 @@ bootRepackage {
     mainClass = 'org.grpcvsrest.restvoting.Application'
 }
 
-task buildImage(type: DockerBuildImage) {
-    dependsOn bootRepackage
-    inputDir = project.projectDir
-    tag = 'rest-voting'
-}
-
-
-task buildDocker(type: DockerBuildImage) {
-    dependsOn bootRepackage
-    inputDir = project.projectDir
-    tag = 'rest-voting:latest'
-}
-
-task tagDocker(type: Exec) {
-    dependsOn buildDocker
-    commandLine 'docker', 'tag', 'rest-voting:latest', 'gcr.io/alien-fold-180922/rest-voting:latest'
-}
-
-task pushDocker(type: Exec) {
-    dependsOn tagDocker
-    commandLine 'gcloud', 'docker', '--', 'push', 'gcr.io/alien-fold-180922/rest-voting:latest'
-}
-
-task deploy(type: Exec) {
-    commandLine 'kubectl', 'create', '-f', 'k8s/rest-voting.yaml'
-}
-
-task undeploy(type: Exec) {
-    commandLine 'kubectl', 'delete', '-f', 'k8s/rest-voting.yaml'
-}
+apply from: 'https://raw.githubusercontent.com/gRPCVsREST/gradle-common/master/common.gradle'

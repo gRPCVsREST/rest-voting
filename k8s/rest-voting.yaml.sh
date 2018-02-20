@@ -1,3 +1,6 @@
+#!/bin/bash
+
+cat <<YAML
 apiVersion: apps/v1beta1
 kind: Deployment
 metadata:
@@ -11,7 +14,7 @@ spec:
     spec:
       containers:
         - name: voting
-          image: gcr.io/alien-fold-180922/rest-voting:latest
+          image: gcr.io/$GCP_PROJECT/rest-voting:latest
           imagePullPolicy: Always
           ports:
             - containerPort: 8080
@@ -19,7 +22,9 @@ spec:
             - name: leaderboard_url
               value: "http://leaderboard:8080/"
             - name: aggregator_url
-              value: "http://rest-aggregator-service:8080."
+              value: "http://rest-aggregator:8080/"
+            - name: foobar
+              value: "$(date +%s)"
 ---
 apiVersion: v1
 kind: Service
@@ -34,3 +39,4 @@ spec:
      targetPort: 8080
      protocol: TCP
 ---
+YAML
